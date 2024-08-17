@@ -8,8 +8,6 @@
 #include <string>
 #include <random>
 
-#include <intrin.h>
-
 // Sequential matrix multiplication function
 void matrix_mul_seq(const std::vector<float> &A, const std::vector<float> &B, std::vector<float> &C, const int N)
 {
@@ -146,15 +144,6 @@ int main(int argc, char *argv[])
     // Calculate the duration
     duration = std::chrono::duration_cast<std::chrono::duration<double>>(end - start);
 
-    // Print the device brand name
-    int cpu_info[4];
-    __cpuid(cpu_info, 0x80000002);
-    std::string cpu_brand = std::string((char *)(cpu_info));
-    __cpuid(cpu_info, 0x80000003);
-    cpu_brand += std::string((char *)(cpu_info));
-    __cpuid(cpu_info, 0x80000004);
-    cpu_brand += std::string((char *)(cpu_info));
-    std::cout << "CPU: " << cpu_brand << std::endl;
 
     // Print the duration
     std::cout << "Duration: " << duration.count() << " seconds" << std::endl;
