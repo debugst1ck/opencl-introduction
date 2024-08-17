@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
         B[i] = distribution(generator);
     }
 
-    std::chrono::system_clock::time_point start = std::chrono::high_resolution_clock::now();
+    std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
 
     // Get the most performant device
     std::vector<cl::Platform> platforms;
@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
     queue.finish();
 
     // End the timer
-    std::chrono::system_clock::time_point end = std::chrono::high_resolution_clock::now();
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
     // Calculate the duration
     std::chrono::duration<double> duration = std::chrono::duration_cast<std::chrono::duration<double>>(end - start);
@@ -133,13 +133,13 @@ int main(int argc, char *argv[])
     std::vector<float> C_seq(N * N, 0.0f);
 
     // Start the timer
-    start = std::chrono::high_resolution_clock::now();
+    start = std::chrono::steady_clock::now();
 
     // Perform the matrix multiplication
     matrix_mul_seq(A, B, C_seq, N);
 
     // End the timer
-    end = std::chrono::high_resolution_clock::now();
+    end = std::chrono::steady_clock::now();
 
     // Calculate the duration
     duration = std::chrono::duration_cast<std::chrono::duration<double>>(end - start);
